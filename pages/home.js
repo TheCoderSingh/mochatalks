@@ -4,17 +4,21 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
+import Header from "../components/header";
+
 const user = {
   name: "Jaskaran Singh",
   email: "thecodersingh@gmail.com",
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
+
 const navigation = [
   { name: "Chat", href: "#", current: true },
   { name: "Coffee", href: "#", current: false },
   { name: "Gifts", href: "#", current: false },
 ];
+
 const userNavigation = [
   { name: "Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -193,18 +197,21 @@ const Home = () => {
         )}
       </Disclosure>
 
-      <header className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-            Mochatalks
-          </h1>
-        </div>
-      </header>
-      <main>
-        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          {/* Your content */}
-        </div>
-      </main>
+      {Object.values(navigation).map((element) => {
+        if (element.current === true) {
+          switch (element.name) {
+            case "Chat":
+              return <Header key={"chat"} />;
+            case "Coffee":
+              return <Header key={"coffee"} />;
+            case "Gifts":
+              return <Header key={"gifts"} />;
+            default: {
+              console.log("Wrong");
+            }
+          }
+        }
+      })}
     </div>
   );
 };
