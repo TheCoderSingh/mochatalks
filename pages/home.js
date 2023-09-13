@@ -207,7 +207,7 @@ const Home = () => {
             case "Gifts":
               return <Header key={"gifts"} />;
             default: {
-              console.log("Wrong");
+              return null;
             }
           }
         }
